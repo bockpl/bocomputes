@@ -5,7 +5,7 @@ LABEL maintainer="pawel.adamczyk.1@p.lodz.pl"
 # SGE
 #ADD soge/sgeexecd.blueocean-v15 /etc/init.d/
 #ADD soge/sge.sh /etc/profile.d/
-#ADD soge/module.sh /etc/profile.d/
+ADD soge/module.sh /etc/profile.d/
 #
 #ADD soge/jemalloc-3.6.0-1.el7.x86_64.rpm /tmp/jemalloc-3.6.0-1.el7.x86_64.rpm
 #
@@ -81,7 +81,7 @@ RUN set -ex \
     && export GNUPGHOME="$(mktemp -d)" \
     && gpg2 --import-ownertrust # mpapis@gmail.com \
     && gpg2 --import-ownertrust # piotr.kuczynski@gmail.com \
-    && gpg2 --keyserver hkp://pgp.mit.edu/ --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+    && gpg2 --keyserver hkp://pgp.mit.edu/ --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB \
 #    && gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
     && gpg2 --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
 #    && gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
